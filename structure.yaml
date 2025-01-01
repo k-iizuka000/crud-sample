@@ -1,0 +1,112 @@
+src:
+  structure.yaml:
+    content: "2テーブル（ユーザーと部署）のCRUD全7画面アプリケーション"
+    dependency: []
+
+  backend:
+    config:
+      application.properties:
+        content: |-
+          Spring Bootアプリケーションの基本設定
+          - サーバーポート設定
+          - データベース接続設定
+          - JPA設定
+          - ロギング設定
+          - 国際化設定
+          - セキュリティ設定
+          - Swagger設定
+        dependency: []
+      
+      pom.xml:
+        content: "Maven依存関係設定ファイル"
+        dependency: []
+
+    controller:
+      UserController.java:
+        content: |-
+          ユーザーリソース管理のRESTコントローラー
+          - ユーザー全件取得
+          - ユーザー詳細取得
+          - ユーザー新規作成
+          - ユーザー更新
+          - ユーザー削除
+          - 部署IDによるユーザー検索
+        dependency:
+          - src/backend/service/UserService.java
+      
+      DepartmentController.java:
+        content: |-
+          部署リソース管理のRESTコントローラー
+          - 全部署取得
+          - 特定IDの部署取得
+          - 新規部署作成
+          - 部署更新
+          - 部署削除
+        dependency:
+          - src/backend/service/DepartmentService.java
+
+    model:
+      User.java:
+        content: |-
+          ユーザーエンティティクラス
+          - ユーザー情報の属性定義
+          - データベースマッピング
+          - バリデーション
+        dependency:
+          - src/backend/model/Department.java
+      
+      Department.java:
+        content: |-
+          部署エンティティクラス
+          - 部署情報の属性定義
+          - データベースマッピング
+          - バリデーション
+        dependency: []
+
+    repository:
+      UserRepository.java:
+        content: |-
+          ユーザーデータアクセスインターフェース
+          - JpaRepositoryを継承
+          - カスタムクエリメソッド定義
+          - ユーザー検索メソッド
+        dependency:
+          - src/backend/model/User.java
+      
+      DepartmentRepository.java:
+        content: |-
+          部署データアクセスインターフェース
+          - JpaRepositoryを継承
+          - カスタムクエリメソッド定義
+          - 部署検索メソッド
+        dependency:
+          - src/backend/model/Department.java
+
+    service:
+      UserService.java:
+        content: |-
+          ユーザービジネスロジック処理
+          - ユーザー関連のビジネスロジック実装
+          - トランザクション管理
+          - データ検証
+        dependency:
+          - src/backend/repository/UserRepository.java
+          - src/backend/repository/DepartmentRepository.java
+      
+      DepartmentService.java:
+        content: |-
+          部署ビジネスロジック処理
+          - 部署関連のビジネスロジック実装
+          - トランザクション管理
+          - データ検証
+        dependency:
+          - src/backend/repository/DepartmentRepository.java
+
+  frontend:
+    css:
+      responsive.css:
+        content: "レスポンシブデザインとスタイル設定"
+        dependency: []
+
+    html:
+      
