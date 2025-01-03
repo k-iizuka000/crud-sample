@@ -64,6 +64,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>部署コード</th>
           <th>部署名</th>
           <th>説明</th>
           <th>アクション</th>
@@ -75,7 +76,9 @@
     </table>
   </div>
 
-  <script src="/js/api.js"></script>
-  <script src="/js/department/department-list.js"></script>
+  <script src="/department/js/department.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', initializeListPage);
+  </script>
 </body>
 </html>;
